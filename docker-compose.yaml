@@ -1,0 +1,11 @@
+version: "3.3"
+services:
+  app:
+      build: .
+      image: flask_docker:latest
+      container_name: webhook
+      volumes:
+        - ./app:/app
+      ports:
+        - "10000:10000"
+      restart: unless-stopped
