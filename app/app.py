@@ -36,13 +36,6 @@ def handle_alert():
                 message += "Summary: "+alert['annotations']['summary']+"\n"                
             if 'description' in alert['annotations']:
                 message += "Description: "+alert['annotations']['description']+"\n"
-                if len(alert['annotations']['description'].split(" ")[0]) > 15: 
-                    box_id = alert['annotations']['description'].split(" ")[0]
-                    box_name = search_boxname(box_id)
-                    message += "Box_Name: " + box_name + "\n"
-                else:
-                    pass
-
             if alert['status'] == "resolved":
                 correctDate = parser.parse(alert['endsAt']).strftime('%Y-%m-%d %H:%M:%S')
                 message += "Resolved: "+correctDate
